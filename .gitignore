@@ -2,3 +2,4 @@
 db_setup.rb
 Gemfile.lock
 *.swp
+assets/
