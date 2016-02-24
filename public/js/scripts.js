@@ -8,7 +8,6 @@ $(function(){
 function getVenues(search){
   var center = getCenter();
   var url = 'search/' + search + '/' + center; 
-  console.log("url: ", url);
   $.ajax({
     method: 'get',
     url: url, 
