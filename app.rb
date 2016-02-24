@@ -3,7 +3,7 @@ require 'cuba/haml'
 require 'cuba/sass'
 require 'dotenv'
 Dotenv.load
-require './venue_finder.rb'
+require './lib/venue_finder.rb'
 
 Cuba.plugin Cuba::Haml
 Cuba.plugin Cuba::Sass
