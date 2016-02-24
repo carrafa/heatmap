@@ -6,9 +6,12 @@ $(function(){
 });
 
 function getVenues(search){
+  var center = getCenter();
+  var url = 'search/' + search + '/' + center; 
+  console.log("url: ", url);
   $.ajax({
     method: 'get',
-    url: 'search?search=' + search,
+    url: url, 
     success: function(response){
       var venues = response;
       var heatPoints = [];
@@ -53,6 +56,15 @@ function initMap(mapOptions) {
   map.mapTypes.set(customMapTypeId, mapStyle);
   map.setMapTypeId(customMapTypeId);
 }
+
+function getCenter(){
+    var center = map.getCenter();
+    var lat = center.lat();
+    var lng = center.lng();
+    var mapCenter = lat + "," + lng;
+    return mapCenter;
+}
+  
 
 function newHeatmap(heatPoints){
   clearHeatMap();

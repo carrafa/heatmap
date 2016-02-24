@@ -1,8 +1,8 @@
-require 'dotenv'
-Dotenv.load
 require 'cuba'
 require 'cuba/haml'
 require 'cuba/sass'
+require 'dotenv'
+Dotenv.load
 require './venue_finder.rb'
 
 Cuba.plugin Cuba::Haml
@@ -27,10 +27,12 @@ Cuba.define do
       haml 'index'
     end
 
-    on "search", param("search")  do |search|
-      venues = get_venues search
+    on "search/:search/:ll" do |search, ll|
+
+      venues = get_venues(search, ll)
       res.headers["Content-Type"] = "application/json; charset=utf-8"
       res.write venues
+
     end
 
   end
