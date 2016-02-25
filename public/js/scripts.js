@@ -1,4 +1,4 @@
-console.log('foood');
+console.log('feel the heat');
 
 $(function(){
   setSearchHandler();
@@ -19,7 +19,6 @@ function getVenues(search){
         var lng = venues[i].venue.location.lng;
         heatPoints.push(new google.maps.LatLng(lat, lng));
       }
-      console.log('heatpoints.length: ', heatPoints.length);
       newHeatmap(heatPoints);
     }
   });
