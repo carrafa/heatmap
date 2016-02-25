@@ -3,7 +3,7 @@ require 'cuba/haml'
 require 'cuba/sass'
 require 'dotenv'
 Dotenv.load
-require './lib/venue_finder.rb'
+require './lib/foursquare.rb'
 
 Cuba.plugin Cuba::Haml
 Cuba.plugin Cuba::Sass
@@ -28,8 +28,7 @@ Cuba.define do
     end
 
     on "search/:search/:ll" do |search, ll|
-
-      venues = get_venues(search, ll)
+      venues = Foursquare.new(search, ll).get_venues
       res.headers["Content-Type"] = "application/json; charset=utf-8"
       res.write venues
 
