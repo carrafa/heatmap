@@ -10,6 +10,7 @@ def get_venues(search, ll)
   response = venue_search(search, ll, offset)
   venues << response[:venues]
   max = response[:max]
+  offset = offset + 50
   while offset < max do
     response = venue_search(search, ll, offset)
     venues << response[:venues]
@@ -27,13 +28,13 @@ def venue_search(search, ll, offset)
   return response
 end
 
-# ----------- to return ll's instead of the whole venue object ------------
+# ----------- to return just lat lng instead of the whole venue object ------------
 def ll_extractor(venues)
   ll_array = []
   venues.each do |venue|
     ll = []
-    ll << venue.location.lat
-    ll << venue.location.lng
+    ll << venue['location']['lat']
+    ll << venue['location']['lng']
     ll_array << ll
   end
   return ll_array
