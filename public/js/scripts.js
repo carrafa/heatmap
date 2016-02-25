@@ -15,10 +15,11 @@ function getVenues(search){
       var venues = response;
       var heatPoints = [];
       for (var i = 0, l = venues.length; i < l; i++) {
-        var lat = venues[i].location.lat;
-        var lng = venues[i].location.lng;
+        var lat = venues[i].venue.location.lat;
+        var lng = venues[i].venue.location.lng;
         heatPoints.push(new google.maps.LatLng(lat, lng));
       }
+      console.log('heatpoints.length: ', heatPoints.length);
       newHeatmap(heatPoints);
     }
   });
